@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopVerse - Your Online Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #f2f3f5;
+      color: #222;
+    }
+
+    header {
+      background-color: #232f3e;
+      color: white;
+      padding: 15px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 700;
+      color: #ff9900;
+      letter-spacing: 1px;
+    }
+
+    .search-bar {
+      display: flex;
+      width: 50%;
+    }
+
+    .search-bar input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 5px 0 0 5px;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .search-bar button {
+      padding: 10px 20px;
+      background-color: #ff9900;
+      border: none;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #ff9900;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url('https://img.freepik.com/premium-photo/bright-sale-banner-shopping-concept_670382-152514.jpg?w=2000') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 120px 20px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 50px;
+      font-weight: 700;
+      text-shadow: 0 3px 8px rgba(0,0,0,0.4);
+      color: #ff9900;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-top: 15px;
+      color: #fff;
+    }
+
+    .hero button {
+      margin-top: 25px;
+      background-color: #ff9900;
+      border: none;
+      color: white;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .hero button:hover {
+      background-color: #ffa733;
+    }
+
+    /* Products Section */
+    .product-section {
+      padding: 60px 50px;
+      background-color: #fff;
+    }
+
+    .product-section h2 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 40px;
+      color: #232f3e;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .product {
+      background-color: #f9f9f9;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .product:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .product img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .product h3 {
+      margin: 15px 0 5px;
+      font-size: 20px;
+      color: #232f3e;
+    }
+
+    .product p {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      color: #ff9900;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .add-btn {
+      margin: 15px 0 25px;
+      background-color: #232f3e;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .add-btn:hover {
+      background-color: #ff9900;
+      color: #232f3e;
+    }
+
+    footer {
+      background-color: #232f3e;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">ShopVerse</div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search for products...">
+      <button>Search</button>
+    </div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Deals</a>
+      <a href="#">Electronics</a>
+      <a href="#">Fashion</a>
+      <a href="#">Cart 🛒</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to ShopVerse</h1>
+      <p>Unbeatable Deals | Trusted Products | Fast Delivery</p>
+      <button>Shop Now</button>
+    </div>
+  </section>
+
+  <section class="product-section">
+    <h2>Featured Products</h2>
+    <div class="products">
+      <div class="product">
+        <img src="https://www.iphonemod.net/wp-content/uploads/2018/03/huawei-matebook-x-pro-thin-body-768x660.png" alt="UltraBook Pro">
+        <h3>UltraBook Pro</h3>
+        <p>High-speed performance in a sleek design.</p>
+        <div class="price">₹74,999</div>
+        <button class="add-btn">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="https://cdn.mos.cms.futurecdn.net/jM9JCM8RBSykEorEqDqpzW.jpg" alt="Smart Speaker">
+        <h3>Echo Sound Speaker</h3>
+        <p>Powerful sound, smart connectivity, and elegant design.</p>
+        <div class="price">₹5,999</div>
+        <button class="add-btn">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="https://thegadgetflow.com/wp-content/uploads/2019/05/Master-and-Dynamic-MW65-Wireless-Active-Noise-Cancelling-Headphones-08.jpg" alt="Headphones">
+        <h3>Noise Cancelling Headphones</h3>
+        <p>Block out the world with superior noise cancellation.</p>
+        <div class="price">₹8,999</div>
+        <button class="add-btn">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="https://wolfbluestore.com/cdn/shop/files/airrun-mens-shoes-wolf-blue-store-417774.webp?v=1722538305&width=1946" alt="Sneakers">
+        <h3>AirRun Sneakers</h3>
+        <p>Comfort meets style for your everyday run.</p>
+        <div class="price">₹3,999</div>
+        <button class="add-btn">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="https://m.media-amazon.com/images/I/81CdhAX0D+L._SL1500_.jpg" alt="Smart Watch">
+        <h3>Smart Watch</h3>
+        <p>Track your fitness and stay connected in style.</p>
+        <div class="price">₹6,499</div>
+        <button class="add-btn">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 ShopVerse. All Rights Reserved. | Designed with ❤️ for demo purposes
+  </footer>
+
+</body>
+</html>
+

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animated Monkey Login ✨</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('https://wallpaperaccess.com/full/327871.jpg') no-repeat center center/cover;
+    }
+
+    /* Overlay blur */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(5px);
+      z-index: 1;
+    }
+
+    /* Floating particles for animation */
+    .light {
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      filter: blur(50px);
+      animation: float 7s infinite alternate ease-in-out;
+      z-index: 0;
+    }
+
+    .light:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+    .light:nth-child(2) { top: 65%; left: 75%; animation-delay: 2s; }
+    .light:nth-child(3) { top: 40%; left: 40%; animation-delay: 4s; }
+
+    @keyframes float {
+      from { transform: translateY(0) scale(1); }
+      to { transform: translateY(-25px) scale(1.2); }
+    }
+
+    /* Login Card */
+    .login-card {
+      position: relative;
+      z-index: 2;
+      width: 400px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 25px;
+      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+      padding: 60px 40px;
+      text-align: center;
+      color: #fff;
+      transform: translateY(50px);
+      opacity: 0;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Monkey Animation */
+    /* .monkey {
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 20px;
+      background: url('https://i.postimg.cc/VN2FdHcq/monkey-eyes-closed.png') center/cover no-repeat;
+      transition: 0.4s ease;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+    } */
+
+    /* .monkey.open {
+      background: url('https://i.postimg.cc/Y9R3nkCW/monkey-eyes-open.png') center/cover no-repeat;
+      transform: scale(1.05);
+    } */
+
+    /* Welcome Text */
+    h2 {
+      font-size: 30px;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fcb69f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glowText 3s infinite alternate;
+      letter-spacing: 1px;
+    }
+
+    @keyframes glowText {
+      from { text-shadow: 0 0 10px #ffb3b3; }
+      to { text-shadow: 0 0 25px #ffd6a5; }
+    }
+
+    p.subtitle {
+      font-size: 15px;
+      color: #fff;
+      margin-bottom: 25px;
+      opacity: 0.8;
+    }
+
+    /* Input Fields */
+  .input-group {
+      position: relative;
+      margin: 20px 0;
+    } 
+
+    .input-group input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      outline: none;
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 16px;
+      transition: 0.3s;
+    } 
+ 
+    .input-group input:focus {
+      border-color: #ffdd99;
+      background: rgba(255, 255, 255, 0.25);
+    } 
+ .input-group input::placeholder {
+      color: #eee;
+    } 
+
+    /* Button */
+    .btn {
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      border: none;
+      padding: 14px;
+      width: 100%;
+      color: #fff;
+      font-size: 17px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(255, 150, 200, 0.5);
+      letter-spacing: 1px;
+    } 
+ 
+    .btn:hover {
+      background: linear-gradient(135deg, #ff7eb3, #ff758c);
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 150, 200, 0.8);
+    } 
+
+    /* Links */
+   .links {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #fff;
+    } 
+ .links a {
+      color: #ffdd99;
+      text-decoration: none;
+      transition: color 0.3s;
+    } 
+
+    /* .links a:hover {
+      color: #ff9a9e;
+    } */
+  </style>
+</head>
+<body>
+  <!-- Floating Glow Elements -->
+  <div class="light"></div>
+  <div class="light"></div>
+  <div class="light"></div>
+
+  <div class="login-card">
+    <div class="monkey" id="monkey"></div>
+    <h2>Welcome Back </h2>
+    <p class="subtitle">Let’s get you back to your world of wonders ✨</p>
+
+    <form onsubmit="openPortfolio(event)">
+      <div class="input-group">
+        <input type="text" placeholder="Username" required />
+      </div>
+      <div class="input-group">
+        <input type="password" placeholder="Password" id="password" required />
+      </div>
+      <button class="btn" type="submit">Login</button>
+
+      <div class="links">
+        <p>Forgot Password? <a href="#">Click Here</a></p>
+        <p>Don’t have an account? <a href="#">Sign Up</a></p>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const monkey = document.getElementById('monkey');
+    const password = document.getElementById('password');
+
+    // Monkey opens eyes on password focus
+    password.addEventListener('focus', () => {
+      monkey.classList.add('open');
+    });
+
+    password.addEventListener('blur', () => {
+      monkey.classList.remove('open');
+    });
+
+    function openPortfolio(event) {
+      event.preventDefault();
+      const card = document.querySelector('.login-card');
+      card.style.transition = 'all 0.8s ease';
+      card.style.transform = 'scale(0.9)';
+      card.style.opacity = '0';
+      setTimeout(() => {
+        window.open("https://sinchana-codes-showcase.lovable.app/", "_blank");
+      }, 800);
+    }
+  </script>
+</body>
+</html>
+
